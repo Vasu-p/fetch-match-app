@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import { Login } from "./features/login/Login";
 import { Home } from "./features/home/Home";
 
@@ -9,6 +9,7 @@ function App() {
       <Routes>
         <Route path="login" index={true} element={<Login />}></Route>
         <Route path="home" element={<Home />}></Route>
+        <Route path="*" element={<Navigate to={"/login"} />}></Route>
       </Routes>
     </div>
   );
