@@ -4,7 +4,7 @@ import { Heart, HeartFill } from "react-bootstrap-icons";
 
 export function DogCard({ dog }) {
   return (
-    <Card style={{ width: "10rem" }}>
+    <Card style={{ width: "12rem" }}>
       <Card.Img height={200} width={140} variant="top" src={dog.img} />
       <Card.Body>
         <Card.Title className="ps-1">
