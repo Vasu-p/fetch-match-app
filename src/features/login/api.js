@@ -1,6 +1,5 @@
-import axios from "axios";
-import { BASE_URL } from "src/constants";
+import { axiosInstance } from "src/axios";
 
 export const login = (name, email) => {
-  return axios.post(`${BASE_URL}/auth/login`, { name, email });
+  return axiosInstance.post(`/auth/login`, { name, email });
 };
