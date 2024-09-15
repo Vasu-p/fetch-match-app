@@ -5,7 +5,7 @@ import { Home } from "./features/home/Home";
 
 function App() {
   return (
-    <div className="App">
+    <div className="App" style={{ height: "100vh" }}>
       <Routes>
         <Route path="login" index={true} element={<Login />}></Route>
         <Route path="home" element={<Home />}></Route>
