@@ -5,13 +5,9 @@ import { BreedSelect } from "./BreedSelect";
 
 export function Filters({ className }) {
   return (
-    <div style={{ width: "75%" }} className="mx-auto mt-4 p-4 border-bottom">
+    <div className={cn(className, "mt-4 p-4")}>
       <h3>Filters</h3>
-      <Stack
-        direction={"horizontal"}
-        gap={4}
-        className={cn(className, "flex-wrap")}
-      >
+      <Stack direction={"horizontal"} gap={4} className={cn("flex-wrap")}>
         <BreedSelect className={"flex-grow-1"} />
 
         <FloatingLabel label="Min Age" className="flex-grow-1">
