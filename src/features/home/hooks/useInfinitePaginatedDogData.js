@@ -1,7 +1,7 @@
 import React, { useCallback, useMemo, useState } from "react";
 import { axiosInstance } from "src/axios";
 
-const PAGE_SIZE = 25;
+const PAGE_SIZE = 50;
 
 const zipLocationMap = new Map();
 
