@@ -10,7 +10,6 @@ export function useFetchBreeds() {
     axiosInstance
       .get("/dogs/breeds")
       .then((res) => {
-        console.log("res data", res.data);
         setBreeds(res.data);
         setLoading(false);
       })

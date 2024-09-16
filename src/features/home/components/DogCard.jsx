@@ -35,9 +35,12 @@ export function DogCard({
             {dog.age} years old
           </Badge>
           <Badge bg="secondary" className="m-1">
-            {dog.zip_code}
+            {dog.location}, {dog.zip_code}
           </Badge>
-          <OverlayTrigger
+          <Badge bg="secondary" className="m-1">
+            {dog.breed}
+          </Badge>
+          {/* <OverlayTrigger
             placement="right"
             delay={{ show: 250, hide: 400 }}
             overlay={(props) => <Tooltip {...props}>{dog.breed}</Tooltip>}
@@ -53,7 +56,7 @@ export function DogCard({
             >
               {dog.breed}
             </Badge>
-          </OverlayTrigger>
+          </OverlayTrigger> */}
         </Card.Text>
       </Card.Body>
     </Card>

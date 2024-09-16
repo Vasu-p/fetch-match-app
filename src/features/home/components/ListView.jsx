@@ -55,11 +55,6 @@ export function ListView({ className, favouritedDogs, onFavouriteToggle }) {
           </div>
         )}
         {error && <div>Error: {error.message}</div>}
-        {error && error.status === 401 && (
-          <p>
-            <Link to="/login">Login</Link> to view the page
-          </p>
-        )}
         {!loading && (
           <>
             <div className="ms-5 mt-5 me-5 d-flex align-items-center">
