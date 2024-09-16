@@ -48,7 +48,7 @@ export function ListView({ className }) {
         {error && <div>Error: {error.message}</div>}
         {!loading && (
           <>
-            <div className="p-3">
+            <div className="ms-5 mt-5">
               <h4>{total} dogs found !!</h4>
             </div>
             <div
