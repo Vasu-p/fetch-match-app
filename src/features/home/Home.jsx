@@ -68,6 +68,7 @@ export function Home({ user, onLogout }) {
           />
           <MatchModal
             matchedDog={matchedDog}
+            user={user}
             show={showMatchModal}
             onClose={() => setShowMatchModal(false)}
           />

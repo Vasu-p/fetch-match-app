@@ -2,7 +2,7 @@ import React from "react";
 import { Button, Modal } from "react-bootstrap";
 import { DogCard } from "./DogCard";
 
-export function MatchModal({ show, matchedDog, onClose }) {
+export function MatchModal({ user, show, matchedDog, onClose }) {
   return (
     <Modal
       size="lg"
@@ -14,7 +14,7 @@ export function MatchModal({ show, matchedDog, onClose }) {
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-          Congratulations! You have a match!
+          Congratulations {user.name}! You have a match!
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
