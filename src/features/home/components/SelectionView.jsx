@@ -36,6 +36,7 @@ export function SelectionView({
               <DogCard
                 key={dog.id}
                 dog={dog}
+                showFavourite={true}
                 isFavourite={true}
                 onFavouriteToggle={onFavouriteToggle}
               />

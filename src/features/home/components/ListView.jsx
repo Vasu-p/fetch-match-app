@@ -87,6 +87,7 @@ export function ListView({ className, favouritedDogs, onFavouriteToggle }) {
                   <DogCard
                     key={dog.id}
                     dog={dog}
+                    showFavourite={true}
                     onFavouriteToggle={(dog) => onFavouriteToggle(dog)}
                     isFavourite={isDogFavourited(dog)}
                   />

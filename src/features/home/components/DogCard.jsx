@@ -2,21 +2,27 @@ import React from "react";
 import { Card, Badge, OverlayTrigger, Tooltip } from "react-bootstrap";
 import { Heart, HeartFill } from "react-bootstrap-icons";
 
-export function DogCard({ dog, onFavouriteToggle, isFavourite }) {
+export function DogCard({
+  dog,
+  onFavouriteToggle,
+  isFavourite,
+  className,
+  showFavourite,
+}) {
   return (
-    <Card style={{ width: "12rem" }}>
+    <Card style={{ width: "12rem" }} className={className}>
       <Card.Img height={200} width={140} variant="top" src={dog.img} />
       <Card.Body>
         <Card.Title className="ps-1">
           <span>{dog.name}</span>
-          {!isFavourite && (
+          {showFavourite && !isFavourite && (
             <Heart
               size={24}
               style={{ cursor: "pointer", float: "right" }}
               onClick={() => onFavouriteToggle(dog)}
             />
           )}
-          {isFavourite && (
+          {showFavourite && isFavourite && (
             <HeartFill
               size={24}
               style={{ cursor: "pointer", color: "red", float: "right" }}
