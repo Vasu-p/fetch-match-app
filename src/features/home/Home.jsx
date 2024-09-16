@@ -22,7 +22,11 @@ export function Home() {
         favouritedDogs={favouritedDogs}
         onFavouriteToggle={handleFavouriteToggle}
       />
-      <SelectionView className={"col-lg-3"} />
+      <SelectionView
+        className={"col-lg-3"}
+        favouritedDogs={favouritedDogs}
+        onFavouriteToggle={handleFavouriteToggle}
+      />
     </div>
   );
 }

@@ -86,8 +86,9 @@ export function ListView({ className, favouritedDogs, onFavouriteToggle }) {
                 {dogs.map((dog) => (
                   <DogCard
                     key={dog.id}
-                    dog={{ ...dog, favourite: isDogFavourited(dog) }}
+                    dog={dog}
                     onFavouriteToggle={(dog) => onFavouriteToggle(dog)}
+                    isFavourite={isDogFavourited(dog)}
                   />
                 ))}
               </InfiniteScroll>
