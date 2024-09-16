@@ -15,6 +15,10 @@ export function Home() {
     });
   }, []);
 
+  const handleMatch = useCallback(() => {
+    alert("Matching not implemented yet");
+  }, []);
+
   return (
     <div className="h-100 d-flex">
       <ListView
@@ -26,6 +30,7 @@ export function Home() {
         className={"col-lg-3"}
         favouritedDogs={favouritedDogs}
         onFavouriteToggle={handleFavouriteToggle}
+        onMatch={handleMatch}
       />
     </div>
   );
