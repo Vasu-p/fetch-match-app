@@ -4,13 +4,14 @@ import { useNavigate } from "react-router-dom";
 import fetchLogo from "src/assets/fetch.png";
 import { login } from "src/features/login/api";
 
-export function Login() {
+export function Login({ onLogin }) {
   const navigate = useNavigate();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
 
   const hanldeLoginClick = useCallback(() => {
     login(name, email).then(() => {
+      onLogin({ name, email });
       navigate("/home");
     });
   }, [name, email]);
