@@ -62,7 +62,7 @@ export function ListView({ className, favouritedDogs, onFavouriteToggle }) {
         )}
         {!loading && (
           <>
-            <div className="ms-5 mt-5 me-5 d-flex">
+            <div className="ms-5 mt-5 me-5 d-flex align-items-center">
               <h4>{total} dogs found !!</h4>
               <FloatingLabel label="Sort By" className="ms-auto">
                 <Form.Select
