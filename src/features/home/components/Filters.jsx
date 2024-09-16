@@ -6,7 +6,7 @@ import { BreedSelect } from "./BreedSelect";
 export function Filters({ className, onFilterChange }) {
   return (
     <div className={cn(className, "mt-4 p-4")}>
-      <h3>Filters</h3>
+      <h2>Filters</h2>
       <Stack direction={"horizontal"} gap={4} className={cn("flex-wrap")}>
         <BreedSelect
           className={"flex-grow-1"}
