@@ -5,8 +5,9 @@ import { DogCard } from "./DogCard";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { Spinner } from "react-bootstrap";
 import { useInfinitePaginatedDogData } from "../hooks/useInfinitePaginatedDogData";
+import { Link } from "react-router-dom";
 
-export function ListView({ className }) {
+export function ListView({ className, favouritedDogs, onFavouriteToggle }) {
   const [filters, setFilters] = useState({
     breeds: [],
     zipCodes: [],
@@ -23,6 +24,13 @@ export function ListView({ className }) {
       [key]: value,
     }));
   }, []);
+
+  const isDogFavourited = useCallback(
+    (dog) => {
+      return favouritedDogs.some((favDog) => favDog.id === dog.id);
+    },
+    [favouritedDogs]
+  );
 
   return (
     <div className={cn(className)}>
@@ -46,6 +54,11 @@ export function ListView({ className }) {
           </div>
         )}
         {error && <div>Error: {error.message}</div>}
+        {error && error.status === 401 && (
+          <p>
+            <Link to="/login">Login</Link> to view the page
+          </p>
+        )}
         {!loading && (
           <>
             <div className="ms-5 mt-5">
@@ -71,7 +84,11 @@ export function ListView({ className }) {
                 style={{ gap: "1rem" }}
               >
                 {dogs.map((dog) => (
-                  <DogCard key={dog.id} dog={{ ...dog, favourite: false }} />
+                  <DogCard
+                    key={dog.id}
+                    dog={{ ...dog, favourite: isDogFavourited(dog) }}
+                    onFavouriteToggle={(dog) => onFavouriteToggle(dog)}
+                  />
                 ))}
               </InfiniteScroll>
             </div>

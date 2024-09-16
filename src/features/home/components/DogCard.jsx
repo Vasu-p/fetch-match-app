@@ -2,7 +2,7 @@ import React from "react";
 import { Card, Badge, OverlayTrigger, Tooltip } from "react-bootstrap";
 import { Heart, HeartFill } from "react-bootstrap-icons";
 
-export function DogCard({ dog }) {
+export function DogCard({ dog, onFavouriteToggle }) {
   return (
     <Card style={{ width: "12rem" }}>
       <Card.Img height={200} width={140} variant="top" src={dog.img} />
@@ -10,12 +10,17 @@ export function DogCard({ dog }) {
         <Card.Title className="ps-1">
           <span>{dog.name}</span>
           {!dog.favourite && (
-            <Heart size={24} style={{ cursor: "pointer", float: "right" }} />
+            <Heart
+              size={24}
+              style={{ cursor: "pointer", float: "right" }}
+              onClick={() => onFavouriteToggle(dog)}
+            />
           )}
           {dog.favourite && (
             <HeartFill
               size={24}
               style={{ cursor: "pointer", color: "red", float: "right" }}
+              onClick={() => onFavouriteToggle(dog)}
             />
           )}
         </Card.Title>
