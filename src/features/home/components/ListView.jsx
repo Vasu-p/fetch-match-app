@@ -3,7 +3,7 @@ import cn from "classnames";
 import { Filters } from "./Filters";
 import { DogCard } from "./DogCard";
 import InfiniteScroll from "react-infinite-scroll-component";
-import { Spinner } from "react-bootstrap";
+import { FloatingLabel, Form, Spinner } from "react-bootstrap";
 import { useInfinitePaginatedDogData } from "../hooks/useInfinitePaginatedDogData";
 import { Link } from "react-router-dom";
 
@@ -14,9 +14,10 @@ export function ListView({ className, favouritedDogs, onFavouriteToggle }) {
     ageMin: 0,
     ageMax: 100,
   });
+  const [sort, setSort] = useState("breed:asc");
 
   const { dogs, loading, error, total, hasMore, loadMore } =
-    useInfinitePaginatedDogData(filters);
+    useInfinitePaginatedDogData(filters, sort);
 
   const handleFilterChange = useCallback((key, value) => {
     setFilters((prevFilters) => ({
@@ -61,8 +62,22 @@ export function ListView({ className, favouritedDogs, onFavouriteToggle }) {
         )}
         {!loading && (
           <>
-            <div className="ms-5 mt-5">
+            <div className="ms-5 mt-5 me-5 d-flex">
               <h4>{total} dogs found !!</h4>
+              <FloatingLabel label="Sort By" className="ms-auto">
+                <Form.Select
+                  style={{ width: "200px" }}
+                  onChange={(e) => setSort(e.target.value)}
+                  value={sort}
+                >
+                  <option value={"breed:asc"}>Breed Asc</option>
+                  <option value={"breed:desc"}>Breed Desc</option>
+                  <option value={"age:asc"}>Age Asc</option>
+                  <option value={"age:desc"}>Age Desc</option>
+                  <option value={"name:asc"}>Name Asc</option>
+                  <option value={"name:desc"}>Name Desc</option>
+                </Form.Select>
+              </FloatingLabel>
             </div>
             <div
               id="scrollableDiv"

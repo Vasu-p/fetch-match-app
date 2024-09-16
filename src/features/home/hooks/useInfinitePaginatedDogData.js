@@ -3,7 +3,7 @@ import { axiosInstance } from "src/axios";
 
 const PAGE_SIZE = 25;
 
-export function useInfinitePaginatedDogData(filters) {
+export function useInfinitePaginatedDogData(filters, sort) {
   const [dogs, setDogs] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -16,7 +16,9 @@ export function useInfinitePaginatedDogData(filters) {
   React.useEffect(() => {
     setLoading(true);
     axiosInstance
-      .get("/dogs/search", { params: { ...filters, size: PAGE_SIZE, from: 0 } })
+      .get("/dogs/search", {
+        params: { ...filters, size: PAGE_SIZE, from: 0, sort: sort },
+      })
       .then((res) => {
         setFrom(PAGE_SIZE);
         setTotal(res.data.total);
@@ -32,12 +34,12 @@ export function useInfinitePaginatedDogData(filters) {
       .finally(() => {
         setLoading(false);
       });
-  }, [filters]);
+  }, [filters, sort]);
 
   const loadMore = useCallback(() => {
     axiosInstance
       .get("/dogs/search", {
-        params: { ...filters, size: PAGE_SIZE, from: from },
+        params: { ...filters, size: PAGE_SIZE, from: from, sort: sort },
       })
       .then((res) => {
         setFrom((prev) => prev + 25);
@@ -50,7 +52,7 @@ export function useInfinitePaginatedDogData(filters) {
       .catch((error) => {
         setError(error);
       });
-  }, [filters, from]);
+  }, [filters, sort, from]);
 
   return { dogs, loading, error, total, hasMore, loadMore };
 }
