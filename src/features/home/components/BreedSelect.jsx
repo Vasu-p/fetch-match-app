@@ -16,7 +16,11 @@ export function BreedSelect({ className, onBreedChange }) {
         >
           {loading && <option>Loading...</option>}
           {error && <option>Error loading breeds</option>}
-          {!loading && !error && <option>Select a breed</option>}
+          {!loading && !error && (
+            <option key={""} value={""}>
+              Select a breed
+            </option>
+          )}
           {breeds.map((breed) => (
             <option key={breed} value={breed}>
               {breed}

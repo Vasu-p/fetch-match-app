@@ -10,7 +10,9 @@ export function Filters({ className, onFilterChange }) {
       <Stack direction={"horizontal"} gap={4} className={cn("flex-wrap")}>
         <BreedSelect
           className={"flex-grow-1"}
-          onBreedChange={(breed) => onFilterChange("breeds", [breed])}
+          onBreedChange={(breed) =>
+            onFilterChange("breeds", breed !== "" ? [breed] : [])
+          }
         />
 
         <FloatingLabel label="Min Age" className="flex-grow-1">
@@ -18,7 +20,10 @@ export function Filters({ className, onFilterChange }) {
             type={"text"}
             placeholder={"Min Age"}
             style={{ flexBasis: "300px" }}
-            onBlur={(e) => onFilterChange("ageMin", e.target.value)}
+            onBlur={(e) => {
+              const val = e.target.value;
+              onFilterChange("ageMin", val !== "" ? val : 0);
+            }}
           />
         </FloatingLabel>
 
@@ -27,7 +32,10 @@ export function Filters({ className, onFilterChange }) {
             type={"text"}
             placeholder={"Max Age"}
             style={{ flexBasis: "300px" }}
-            onBlur={(e) => onFilterChange("ageMax", e.target.value)}
+            onBlur={(e) => {
+              const val = e.target.value;
+              onFilterChange("ageMax", val !== "" ? val : 100);
+            }}
           />
         </FloatingLabel>
 
@@ -36,7 +44,10 @@ export function Filters({ className, onFilterChange }) {
             type={"text"}
             placeholder={"Zip Code"}
             style={{ flexBasis: "300px" }}
-            onBlur={(e) => onFilterChange("zipCodes", [e.target.value])}
+            onBlur={(e) => {
+              const val = e.target.value;
+              onFilterChange("zipCodes", val !== "" ? [val] : []);
+            }}
           />
         </FloatingLabel>
       </Stack>
